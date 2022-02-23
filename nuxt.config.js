@@ -34,7 +34,7 @@ module.exports = {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module',
+    // ['@nuxtjs/eslint-module', { ignoreDuringBuilds: true }],
     '@nuxtjs/dotenv'
   ],
 
@@ -44,7 +44,11 @@ module.exports = {
     'bootstrap-vue/nuxt',
     '@nuxtjs/axios'
   ],
+  // eslint: {
+  //   // Warning: This allows production builds to successfully complete even if
+  //   // your project has ESLint errors.
 
+  // },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308

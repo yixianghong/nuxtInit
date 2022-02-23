@@ -1,3 +1,4 @@
+import { getProducts } from '../api/productAPI'
 export default (context, inject) => {
     const { $axios } = context
     const axios = $axios.create({
@@ -17,5 +18,9 @@ export default (context, inject) => {
             },
         )
     }
+    const api = {
+        getProducts: getProducts(axios)
+    }
+    inject('api', api)
     inject('axios', axios)
 }
