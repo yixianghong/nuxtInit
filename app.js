@@ -4,10 +4,29 @@ const nuxtConfig = require('./nuxt.config.js')
 const apiRouter = require('./src/server/routes')
 const { Nuxt, Builder } = require('nuxt')
 const serverLogMiddleWare = require('./src/server/middleware/serverLogMiddleWare')
+const session = require('express-session')
 // 後端的env
 require('dotenv').config();
+
 // 加入middleware
+// 加入 serverLogmiddleware (輸出log)
 app.use(serverLogMiddleWare)
+// 加入 session middleware (session 初始化)
+app.use(session({
+    secret: 'sessionSecret',
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 1000 * 60 * 10
+    }
+}))
+
+// example資料塞入session
+app.use('/', (req, res, next) => {
+    const user = 'Guest'
+    req.session.account = user
+    next()
+})
 
 async function start() {
     // Init Nuxt.js
