@@ -22,6 +22,8 @@
     "core-js": "^3.19.3",
     "cross-env": "^7.0.3",
     "express": "^4.17.2",
+    "express-session": "^1.17.2",
+    "mysql": "^2.18.1",
     "nodemon": "^2.0.15",
     "nuxt": "^2.15.8",
     "vue": "^2.6.14",

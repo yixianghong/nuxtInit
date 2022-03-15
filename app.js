@@ -5,7 +5,8 @@ const apiRouter = require('./src/server/routes')
 const { Nuxt, Builder } = require('nuxt')
 const serverLogMiddleWare = require('./src/server/middleware/serverLogMiddleWare')
 const session = require('express-session')
-// 後端的env
+const dbConnection = require('./src/config/db')
+// 載入所有env環境變數
 require('dotenv').config();
 
 // 加入middleware
