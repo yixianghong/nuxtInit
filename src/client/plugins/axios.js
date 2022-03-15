@@ -1,4 +1,6 @@
 import { getProducts } from '../api/productAPI'
+import { getStudents, addStudents } from '../api/CRUDAPI'
+
 export default (context, inject) => {
     const { $axios } = context
     const axios = $axios.create({
@@ -19,7 +21,9 @@ export default (context, inject) => {
         )
     }
     const api = {
-        getProducts: getProducts(axios)
+        getProducts: getProducts(axios),
+        getStudents: getStudents(axios),
+        addStudents: addStudents(axios),
     }
     inject('api', api)
     inject('axios', axios)

@@ -1,16 +1,9 @@
 <!-- Please remove this file from your project -->
 <template>
   <div
-    class="
-      relative
-      flex
-      items-top
-      justify-center
-      min-h-screen
-      bg-gray-100
-      sm:items-center sm:pt-0
-    "
+    class="relative flex items-top justify-center min-h-screen bg-gray-100 sm:items-center sm:pt-0"
   >
+    <div @click="addStudents">test</div>
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css"
       rel="stylesheet"
@@ -127,13 +120,26 @@
 export default {
   name: "NuxtTutorial",
   mounted() {
-    this.getSomething()
+    this.getStudents();
   },
   methods: {
-    async getSomething() {
-      const res = await this.$api.getProducts()
-      console.log(res)
+    async getStudents() {
+      const res = await this.$api.getStudents();
+      console.log(res);
+    },
+    async addStudents() {
+      const data = {
+        name: "jason",
+        sex: "boy",
+        birthday: "1993/04/05",
+      };
+      try {
+        const res = await this.$api.addStudents(data);
+        console.log(res);
+      } catch (err) {
+        console.log(err);
+      }
     },
   },
-}
+};
 </script>
