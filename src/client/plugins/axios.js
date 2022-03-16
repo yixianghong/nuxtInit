@@ -1,4 +1,3 @@
-import { getProducts } from '../api/productAPI'
 import { getStudents, addStudents } from '../api/CRUDAPI'
 
 export default (context, inject) => {
@@ -21,7 +20,6 @@ export default (context, inject) => {
         )
     }
     const api = {
-        getProducts: getProducts(axios),
         getStudents: getStudents(axios),
         addStudents: addStudents(axios),
     }

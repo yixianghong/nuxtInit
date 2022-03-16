@@ -49,9 +49,7 @@ async function start() {
     }
     // 加入 api Router
     app.use(apiRouter)
-    // 通过 nuxt.render 函数，把 Nuxt.js 变成你 Node.js 服务端的中间件。
-    // 建议把 nuxt.render 放到中间件列表的最后面，因为它不会再调用 next() 方法，而是直接处理你 web 应用的页面渲染。
-    app.use(nuxt.render)
+    
     // handleErrorMiddle 統一處理錯誤
     app.use((error, req, res, next) => {
         console.log("Error Handling Middleware called")
@@ -64,6 +62,10 @@ async function start() {
         else
             res.status(500).json({ 'message': 'failed!!' })
     })
+
+    // 通过 nuxt.render 函数，把 Nuxt.js 变成你 Node.js 服务端的中间件。
+    // 建议把 nuxt.render 放到中间件列表的最后面，因为它不会再调用 next() 方法，而是直接处理你 web 应用的页面渲染。
+    app.use(nuxt.render)
 
     // 啟動 node server
     app.listen(port, host, () => {
