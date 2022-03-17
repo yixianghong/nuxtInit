@@ -5,6 +5,8 @@ const apiRouter = require('./src/server/routes')
 const { Nuxt, Builder } = require('nuxt')
 const session = require('express-session')
 const dbConnection = require('./src/config/db')
+const swaggerUi = require('swagger-ui-express')
+const swaggerSetting = require('./src/config/swagger')
 const serverLogMiddleWare = require('./src/server/middleware/serverLogMiddleWare')
 // 載入所有env環境變數
 require('dotenv').config();
@@ -29,6 +31,8 @@ app.use(session({
         maxAge: 1000 * 60 * 10
     }
 }))
+// 加入swagger ui 路由
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSetting))
 
 // example資料塞入session
 app.use('/', (req, res, next) => {
@@ -49,7 +53,7 @@ async function start() {
     }
     // 加入 api Router
     app.use(apiRouter)
-    
+
     // handleErrorMiddle 統一處理錯誤
     app.use((error, req, res, next) => {
         console.log("Error Handling Middleware called")
