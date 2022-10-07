@@ -1,3 +1,7 @@
+require('./src/env')
+console.log('env===>', process.env.NODE_ENV);
+
+
 module.exports = {
   // 關閉 Are you interested in participating?
   telemetry: false,
@@ -35,7 +39,7 @@ module.exports = {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     // ['@nuxtjs/eslint-module', { ignoreDuringBuilds: true }],
-    '@nuxtjs/dotenv'
+    ['@nuxtjs/dotenv', { path: './', filename: `.env.${process.env.NODE_ENV}` }],
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -50,9 +54,16 @@ module.exports = {
 
   // },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
+  // axios: {
+  //   Workaround to avoid enforcing hard-coded localhost:3003: https://github.com/nuxt-community/axios-module/issues/308
+  //   baseURL: '/'
+  // },
   axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/'
+    baseURL: `${process.env.BASE_URL}:${process.env.PORT}`,
+    browserBaseURL: process.env.BASE_URL,
+    headers: {
+      FromNuxt: 'true',
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

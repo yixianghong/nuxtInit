@@ -1,5 +1,5 @@
 import { getStudents, addStudents } from '../api/CRUDAPI'
-
+import { getDogInfo } from '../api/DogAPI'
 export default (context, inject) => {
     const { $axios } = context
     const axios = $axios.create({
@@ -20,8 +20,13 @@ export default (context, inject) => {
         )
     }
     const api = {
-        getStudents: getStudents(axios),
-        addStudents: addStudents(axios),
+        student:{
+            getStudents: getStudents(axios),
+            addStudents: addStudents(axios),
+        },
+        dog:{
+            getDogInfo: getDogInfo(axios)
+        }
     }
     inject('api', api)
     inject('axios', axios)

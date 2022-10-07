@@ -3,7 +3,6 @@
   <div
     class="relative flex items-top justify-center min-h-screen bg-gray-100 sm:items-center sm:pt-0"
   >
-    <div @click="addStudents">test</div>
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css"
       rel="stylesheet"
@@ -118,28 +117,6 @@
 
 <script>
 export default {
-  name: "NuxtTutorial",
-  mounted() {
-    this.getStudents();
-  },
-  methods: {
-    async getStudents() {
-      const res = await this.$api.getStudents();
-      console.log(res);
-    },
-    async addStudents() {
-      const data = {
-        name: "jason",
-        sex: "boy",
-        birthday: "1993/04/05",
-      };
-      try {
-        const res = await this.$api.addStudents(data);
-        console.log(res);
-      } catch (err) {
-        console.log(err);
-      }
-    },
-  },
+  name: "NuxtTutorial"
 };
 </script>

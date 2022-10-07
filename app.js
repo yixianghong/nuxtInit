@@ -4,10 +4,11 @@ const nuxtConfig = require('./nuxt.config.js')
 const apiRouter = require('./src/server/routes')
 const { Nuxt, Builder } = require('nuxt')
 const session = require('express-session')
-const dbConnection = require('./src/config/db')
 const swaggerUi = require('swagger-ui-express')
 const swaggerSetting = require('./src/config/swagger')
 const serverLogMiddleWare = require('./src/server/middleware/serverLogMiddleWare')
+const cookieParser = require('cookie-parser')
+const csrf = require('./src/server/middleware/csrf')
 // 載入所有env環境變數
 require('dotenv').config();
 // 取得body
@@ -22,6 +23,8 @@ app.use(express.json())
 // 加入middleware
 // 加入 serverLogmiddleware (輸出log)
 app.use(serverLogMiddleWare)
+// 加入cookieParser
+app.use(cookieParser())
 // 加入 session middleware (session 初始化)
 app.use(session({
     secret: 'sessionSecret',
@@ -45,12 +48,15 @@ async function start() {
     // Init Nuxt.js
     const nuxt = new Nuxt(nuxtConfig)
     // 取得nuxt port host 資訊
-    const { host, port } = nuxt.options.server
+    const { host } = nuxt.options.server
+    const PORT = process.env.PORT
     // Build only in dev mode
     if (process.env.NODE_ENV === 'dev') {
         const builder = new Builder(nuxt)
         await builder.build()
     }
+    // 加入 csrf
+    app.use(csrf)
     // 加入 api Router
     app.use(apiRouter)
 
@@ -72,8 +78,8 @@ async function start() {
     app.use(nuxt.render)
 
     // 啟動 node server
-    app.listen(port, host, () => {
-        console.log('server is listen', + port);
+    app.listen(PORT, host, () => {
+        console.log('server is listen', + PORT);
     })
 }
 
