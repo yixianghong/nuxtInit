@@ -1,0 +1,27 @@
+.lineBlock {
+  position: relative;
+  &--line {
+    background: $Dark-300;
+    width: 100%;
+    height: 1px;
+  }
+  &--text {
+    padding-left: 2px;
+    padding-right: 2px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: $Light;
+    color: $Dark-300;
+    white-space: nowrap;
+    &.left {
+      left: 0%;
+      transform: translate(0, -50%);
+    }
+    &.right {
+      left: 100%;
+      transform: translate(-100%, -50%);
+    }
+  }
+}

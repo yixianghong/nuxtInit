@@ -1,0 +1,278 @@
+html,
+body {
+  background: $Light-300;
+  color: $Light-100;
+  letter-spacing: 0.04em;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+    background-color: $Light-300; /* or add it to the track */
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $Success-500;
+    border-radius: 4px;
+  }
+}
+
+.img-contain {
+  object-fit: contain;
+}
+.img-cover {
+  object-fit: cover;
+}
+.pointer {
+  cursor: pointer;
+}
+.white-space-nowrap {
+  white-space: nowrap;
+}
+.break-any {
+  line-break: anywhere;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  padding: 0;
+  list-style: none;
+}
+
+hr {
+  margin: 0;
+}
+
+h1,
+.h1 {
+  font-size: 56px;
+  line-height: 62px;
+  font-weight: 700;
+}
+h2,
+.h2 {
+  font-size: 40px;
+  line-height: 56px;
+  font-weight: 700;
+}
+h3,
+.h3 {
+  font-size: 32px;
+  line-height: 48px;
+  font-weight: 700;
+}
+h4,
+.h4 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+}
+h5,
+.h5 {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 700;
+}
+.text-l {
+  font-size: 18px;
+  line-height: 24px;
+}
+.text-m {
+  font-size: 16px;
+  line-height: 20px;
+}
+.text-s {
+  font-size: 14px;
+  line-height: 18px;
+}
+.text-xs {
+  font-size: 12px;
+  line-height: 16px;
+}
+.text-error {
+  color: $Error-500;
+}
+.text-attention {
+  color: $Attention-500;
+}
+.text-grey {
+  color: $Dark-500;
+}
+.text-grey-300 {
+  color: $Dark-300;
+}
+.text-grey-700 {
+  color: $Dark-700;
+}
+.bg-info-800 {
+  background: $Info-800;
+}
+.bg-light-300 {
+  background: $Light-300 !important;
+}
+.bg-light-100 {
+  background: $Light-100 !important;
+}
+.bg-light {
+  background: $Light !important;
+}
+.text-success {
+  color: $Success-500;
+}
+.normal-border-radius {
+  border-radius: 8px;
+}
+.form-control {
+  padding: 16px 10px;
+}
+.btn-l {
+  min-width: 160px;
+  padding: 12px 24px;
+}
+.btn-m {
+  min-width: 92px;
+  padding: 7px 24px;
+}
+.btn-sm {
+  min-width: 76px;
+  padding: 3px 16px;
+}
+.btn-xs {
+  min-width: 56px;
+  padding: 3px 16px;
+  font-size: 12px;
+  line-height: 16px;
+}
+.btn-light {
+  border: 1px solid $Dark-200;
+  color: $Dark-300;
+}
+.btn-disabled {
+  background-color: $Light-100;
+}
+// btn-switch
+.btn-switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $Dark-500;
+  border: 1px solid $Light;
+  &-m {
+    min-width: 70px;
+    height: 40px;
+  }
+  &-sm {
+    min-width: 66px;
+    height: 24px;
+  }
+  &.active {
+    color: $Success-500;
+    border: 1px solid $Light;
+    background: $Light-100;
+  }
+}
+.custom-control-label::before {
+  top: 0;
+  left: -24.5px;
+  width: 20px;
+  height: 20px;
+}
+.custom-control-label::after {
+  top: 0;
+  left: -24.5px;
+  width: 20px;
+  height: 20px;
+}
+
+.was-validated .form-control:valid,
+.form-control.is-valid {
+  border: 1px solid $Dark-200;
+}
+
+.add-shadow {
+  box-shadow: 0px 0px 10px rgba(132, 132, 132, 0.15);
+}
+// .custom-select {
+//   background: #ffffff url("@/assets/img/svg/arrow_down_icon.svg") right 0.75rem
+//     center/8px 10px no-repeat;
+// }
+
+.singleEllipsis {
+  @include singleEllipsis;
+}
+.h-320 {
+  min-height: 320px;
+}
+.modal-dialog {
+  @include sm {
+    max-height: 100vh;
+    margin: 0;
+  }
+}
+.modal-content {
+  @include sm {
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+.badge-outline-light {
+  border: 1px solid $Light;
+}
+
+.no-shadow {
+  box-shadow: none !important;
+}
+
+.table-hover tbody tr:hover {
+  background-color: $Light-100;
+}
+.table th,
+.table td {
+  vertical-align: middle;
+}
+.position-Y-center {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.position-X-center {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.custom-scrollbar {
+  & ::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+    background-color: $Light-300; /* or add it to the track */
+  }
+  & ::-webkit-scrollbar-thumb {
+    background: $Success-500;
+    border-radius: 4px;
+  }
+}
+
+//中文換行
+.pre-wrap {
+  white-space: pre-wrap;
+}
+.slideWrap {
+  max-width: 800px !important;
+  width: 800px !important;
+  height: 460px !important;
+  img {
+    width: 800px !important;
+    height: 460px !important;
+  }
+}
+.bg-transparent {
+  background-color: transparent;
+}
+.carousel-indicators {
+  li {
+    border-radius: 50% !important;
+  }
+}

@@ -6,9 +6,10 @@ const { Nuxt, Builder } = require('nuxt')
 const session = require('express-session')
 const swaggerUi = require('swagger-ui-express')
 const swaggerSetting = require('./src/config/swagger')
-const serverLogMiddleWare = require('./src/server/middleware/serverLogMiddleWare')
+const serverLogMiddleware = require('./src/server/middleware/serverLogMiddleware')
 const cookieParser = require('cookie-parser')
 const csrf = require('./src/server/middleware/csrf')
+
 // 載入所有env環境變數
 require('dotenv').config();
 // 取得body
@@ -19,10 +20,6 @@ app.use(
 )
 
 app.use(express.json())
-
-// 加入middleware
-// 加入 serverLogmiddleware (輸出log)
-app.use(serverLogMiddleWare)
 // 加入cookieParser
 app.use(cookieParser())
 // 加入 session middleware (session 初始化)
@@ -34,15 +31,13 @@ app.use(session({
         maxAge: 1000 * 60 * 10
     }
 }))
+
+// 加入 middleware
+// 加入 serverLogmiddleware (輸出log)
+app.use(serverLogMiddleware)
+
 // 加入swagger ui 路由
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSetting))
-
-// example資料塞入session
-app.use('/', (req, res, next) => {
-    const user = 'Guest'
-    req.session.account = user
-    next()
-})
 
 async function start() {
     // Init Nuxt.js

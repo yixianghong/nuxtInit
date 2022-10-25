@@ -1,0 +1,138 @@
+// Custom Bootstrap variable overrides go first
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 992px,
+  lg: 1200px,
+  xl: 1400px,
+) !default;
+
+$container-max-widths: (
+  sm: 576px,
+  md: 720px,
+  lg: 960px,
+  xl: 1280px,
+) !default;
+
+$theme-colors: () !default;
+$font-weight-bold: 600;
+$font-family-sans-serif: "Helvetica", "Noto Sans";
+
+$spacer: 4px !default;
+$spacers: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$spacers: map-merge(
+  (
+    0: 0,
+    1: (
+      $spacer * 1,
+    ),
+    //4px
+    2:
+      (
+        $spacer * 2,
+      ),
+    //8px
+    3: $spacer * 3,
+    //16px
+    4:
+      (
+        $spacer * 4,
+      ),
+    //24px
+    5:
+      (
+        $spacer * 5,
+      ),
+    //48px
+    6:
+      (
+        $spacer * 6,
+      ),
+    //64px
+    7:
+      (
+        $spacer * 7,
+      ),
+    //80px
+    8:
+      (
+        $spacer * 8,
+      ),
+    //100px
+    9:
+      (
+        $spacer * 9,
+      ),
+    //120px
+    10:
+      (
+        $spacer * 10,
+      )
+      //150px,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+  ),
+  $spacers
+);
+
+$info: $Info-900 !default;
+$success: $Success-500 !default;
+$danger: $Error-500 !default;
+$light: $Light !default;
+$dark: $Dark !default;
+$secondary: $Dark-200 !default;
+// input
+$input-placeholder-color: $Dark-300;
+$input-font-size: 14px;
+$input-focus-border-color: $Success-500;
+$input-focus-box-shadow: 0px 0px 0px 2px $Success-300;
+$custom-select-focus-box-shadow: 0px 0px 0px 2px $Success-300;
+$enable-validation-icons: true !default;
+$form-feedback-icon-valid: none !default;
+$form-feedback-icon-invalid: none !default;
+$custom-control-indicator-checked-bg: $Success-500;
+// img
+$thumbnail-padding: 1px;
+// model
+$modal-md: 600px;
+$modal-sm: 480px;
+// table
+$table-accent-bg: $Info-200;
+// carousel
+$carousel-indicator-width: 8px;
+$carousel-indicator-height: 8px;
+// dropdown
+$dropdown-min-width: 60px;
+// avatar
+// $b-avatar-size: initial;
+// $border-radius: 16px;
+// $primary:       $blue !default;
+// $secondary:     $gray-600 !default;
+// $warning:       $yellow !default;
+// $form-feedback-margin-top:          $form-text-margin-top !default;
+// $form-feedback-font-size:           $small-font-size !default;
+// $form-feedback-valid-color:         theme-color("success") !default;
+// $form-feedback-invalid-color:       theme-color("danger") !default;
+// $form-feedback-icon-valid-color:    $form-feedback-valid-color !default;
+// $form-feedback-icon-valid:          url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'><path fill='#{$form-feedback-icon-valid-color}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/></svg>") !default;
+// $form-feedback-icon-invalid-color:  $form-feedback-invalid-color !default;
+// $form-feedback-icon-invalid:        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='#{$form-feedback-icon-invalid-color}' viewBox='0 0 12 12'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='#{$form-feedback-icon-invalid-color}' stroke='none'/></svg>") !default;
+// $form-validation-states: () !default;
+// $form-validation-states: map-merge(
+//   (
+//     "valid": (
+//       "color": $form-feedback-valid-color,
+//       "icon": $form-feedback-icon-valid
+//     ),
+//     "invalid": (
+//       "color": $form-feedback-invalid-color,
+//       "icon": $form-feedback-icon-invalid
+//     ),
+//   ),
+//   $form-validation-states
+// );
+// Then include the following
+// btn
+$btn-focus-box-shadow: none;
+@import "~/node_modules/bootstrap/scss/bootstrap.scss";
+@import "~/node_modules/bootstrap-vue/src/index.scss";
+@import "~/node_modules/bootstrap-vue/src/icons.scss";

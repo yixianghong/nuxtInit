@@ -1,9 +1,8 @@
-const express = require('express')
-const CRUDOutsideRouter = require('./CRUD-Outside')
-const CRUDLocalRouter = require('./CRUD-Local')
-const apiRouter = express.Router()
+const express = require("express");
+const apiRouter = express.Router();
+// const checkTokenMiddleware = require("../middleware/checkTokenMiddleware");
+const BackendApiRouter = require("./api/backendApi");
 
-apiRouter.use('/api', CRUDOutsideRouter, CRUDLocalRouter)
+apiRouter.use("/api", BackendApiRouter);
 
-
-module.exports = apiRouter
+module.exports = apiRouter;

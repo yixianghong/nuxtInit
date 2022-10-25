@@ -1,14 +1,12 @@
 require('./src/env')
 console.log('env===>', process.env.NODE_ENV);
-
-
 module.exports = {
   // 關閉 Are you interested in participating?
   telemetry: false,
   srcDir: 'src/client/',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'nuxtDemo',
+    title: '',
     htmlAttrs: {
       lang: 'en'
     },
@@ -20,11 +18,12 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '~/assets/scss/_main.scss'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -37,6 +36,7 @@ module.exports = {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    '@nuxtjs/style-resources',
     // https://go.nuxtjs.dev/eslint
     // ['@nuxtjs/eslint-module', { ignoreDuringBuilds: true }],
     ['@nuxtjs/dotenv', { path: './', filename: `.env.${process.env.NODE_ENV}` }],
@@ -48,6 +48,11 @@ module.exports = {
     'bootstrap-vue/nuxt',
     '@nuxtjs/axios'
   ],
+
+  styleResources: {
+    scss: ["~/assets/scss/_mixin.scss", "~/assets/scss/_variables.scss"],
+    hoistUseStatements: true
+  },
   // eslint: {
   //   // Warning: This allows production builds to successfully complete even if
   //   // your project has ESLint errors.
@@ -60,7 +65,7 @@ module.exports = {
   // },
   axios: {
     baseURL: `${process.env.BASE_URL}:${process.env.PORT}`,
-    browserBaseURL: process.env.BASE_URL,
+    browserBaseURL: `${process.env.BASE_URL}:${process.env.PORT}`,
     headers: {
       FromNuxt: 'true',
     },
